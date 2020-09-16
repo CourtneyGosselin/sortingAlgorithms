@@ -1,8 +1,6 @@
 import React, { Component, useEffect, useState} from "react";
 import * as d3 from "d3";
 import BarChart from "./barChart";
-import { timeout } from "d3";
-
 
 class Main extends Component {
   constructor(props) {
@@ -17,10 +15,13 @@ class Main extends Component {
   bubbleSort = () => {
     const {dataset, sortSteps} = this.state;
     const tempDataSet = [];
+    const testData = [];
+
     for(i = 0; i<dataset.length; i++){
       tempDataSet[i] = dataset[i];
+      testData[i] = dataset[i];
     }
-    console.log("Data before: " + dataset);
+   // console.log("Data before: " + dataset);
     for(var i = 0; i < dataset.length-1; i++){
         for(var j = 0; j < dataset.length - i - 1; j++){
             if(tempDataSet[j]> tempDataSet[j+1]){
@@ -33,10 +34,29 @@ class Main extends Component {
             }
         }
     }
-   console.log("Bubble sort finished: " + dataset);
+    if(this.isSorted(tempDataSet)){
+      console.log("The array is sorted");
+    }else{
+      console.log("The array is not sorted");
+    }
+
+   }
+  
+   isSorted = (arr) =>{
+    for(var i = 0; i < arr.length - 2; i++){
+      if(arr[i] > arr[i+1]){
+        return false;
+      }
+    }
+    return true;
   }
-  
-  
+
+  compareArrays = (array1, array2) =>{
+    if(JSON.stringify(array1)==JSON.stringify(array2)){
+      return true;
+    }
+  return false;
+  }
 
   randomArray = () => {
     const {dataset} = this.state;
@@ -44,7 +64,15 @@ class Main extends Component {
     for(var i = 0; i < newdataset.length; i++){
       newdataset[i] = Math.floor(Math.random() * Math.floor(100));
     }
+
     console.log(newdataset);
+
+    if(this.compareArrays(dataset, newdataset)){
+      console.log("Generated array matches original");
+    }else{
+      console.log("New generated array");
+    }
+    
     this.setState({
       dataset: newdataset,
     }, () => {return dataset})
