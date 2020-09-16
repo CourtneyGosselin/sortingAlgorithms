@@ -41,7 +41,7 @@ class Main extends Component {
 
    }
   
-   // Checks if the array is sorted
+   // Checks if the array is sorted for bubble sort
    isSorted = (arr) =>{
     for(var i = 0; i < arr.length - 2; i++){
       if(arr[i] > arr[i+1]){
