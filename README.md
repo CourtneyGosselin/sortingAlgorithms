@@ -1,4 +1,4 @@
-# Visualization fo Sorting Algorithm
+# Visualization of Sorting Algorithm
 
 Creating a visualization of sorting algorithms using React.JS and D3.JS. 
 
