@@ -1,5 +1,4 @@
 import React, { Component, useEffect, useState} from "react";
-import * as d3 from "d3";
 import BarChart from "./barChart";
 
 class Main extends Component {
@@ -11,7 +10,7 @@ class Main extends Component {
     };
   }
 
-  
+  // Sort data using bubble sort
   bubbleSort = () => {
     const {dataset, sortSteps} = this.state;
     const tempDataSet = [];
@@ -42,6 +41,7 @@ class Main extends Component {
 
    }
   
+   // Checks if the array is sorted
    isSorted = (arr) =>{
     for(var i = 0; i < arr.length - 2; i++){
       if(arr[i] > arr[i+1]){
@@ -51,6 +51,7 @@ class Main extends Component {
     return true;
   }
 
+  // Compares arraus to check if the new array is generated
   compareArrays = (array1, array2) =>{
     if(JSON.stringify(array1)==JSON.stringify(array2)){
       return true;
@@ -58,6 +59,7 @@ class Main extends Component {
   return false;
   }
 
+  // Generate random array for the new data
   randomArray = () => {
     const {dataset} = this.state;
     const newdataset = [12, 31, 22, 17, 25, 18, 29, 14, 9, 3];
@@ -79,7 +81,7 @@ class Main extends Component {
   }
     
 
-
+  // Visual rendering
   render() {
     const {title, dataset} = this.state;
 
